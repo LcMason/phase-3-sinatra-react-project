@@ -8,22 +8,12 @@ const GangsterFilmsContext = createContext(null);
 
 const GangsterFilmsProvider = ({ children }) => {
     const [gangsterFilms, setGangsterFilms] = useState([]);
-    // const [title, setTitle] = useState([]);
-    // const [gnere, setGenre] = useState([]);
-    // const [director, setDirector] = useState([]);
-    // const [description, setDescription] = useState([]);
-
-    // const navigate = useNavigate();
-
-    
+ 
     useEffect(() => {
         fetch(baseUrl + '/gangster_films')
             .then(resp => resp.json())
             .then(gangsterFilms => setGangsterFilms(gangsterFilms))
     }, [])
-
-    
-
 
     const addGangsterFilm = gangsterFilm => {
         fetch(baseUrl + '/gangster_films', {
@@ -38,18 +28,6 @@ const GangsterFilmsProvider = ({ children }) => {
 
     }
 
-    // const addReview = review => {
-    //     fetch(baseUrl + '/reviews', {
-    //         method: "POST",
-    //         headers,
-    //         body: JSON.stringify(review)
-    //     })
-    //         .then(resp => resp.json())
-    //         .then(reviews => {
-    //             setReviews([...reviews, review])
-    //             navigate('/reviews')
-    //         })
-    // }
 
     return <GangsterFilmsContext.Provider value={{ gangsterFilms, addGangsterFilm }}>{children} </GangsterFilmsContext.Provider>
 }

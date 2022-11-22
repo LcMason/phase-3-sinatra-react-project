@@ -6,6 +6,8 @@ import GangsterFilmsCard from './GangsterFilmsCard'
 
 export const GangsterFilmsList = () => {
   const { gangsterFilms } = useContext(GangsterFilmsContext)
+  console.log(gangsterFilms)
+
   
  
 

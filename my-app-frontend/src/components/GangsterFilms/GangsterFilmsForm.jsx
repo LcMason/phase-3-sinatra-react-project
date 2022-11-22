@@ -7,8 +7,7 @@ const GangsterFilmsForm = () => {
   const [genre, handleChangeGenre] = useHandleChange("");
   const [director, handleChangeDirector] = useHandleChange("");
   const [description, handleChangeDescription] = useHandleChange("");
-  // const [review, handleChangeReview] = useHandleChange("");
-  // const [rating, handleChangeRating] = useHandleChange("");
+ 
 
 
   const {addGangsterFilm} = useContext(GangsterFilmsContext);
@@ -40,14 +39,7 @@ const GangsterFilmsForm = () => {
           <label htmlFor="description">Description:</label>
           <input type="text" name="description" id="description" value={description} onChange={handleChangeDescription}/>
         </div>
-        {/* <div> */}
-          {/* <label htmlFor="review">Review:</label>
-          <input type="text" name="review" id="review" value={review} onChange={handleChangeReview}/>
-        </div>
-        <div>
-          <label htmlFor="rating">Rating:</label>
-          <input type="text" name="rating" id="rating" value={rating} onChange={handleChangeRating}/>
-        </div> */}
+       
         <input type="submit" value="Submit" />
       </form>
     </div>
