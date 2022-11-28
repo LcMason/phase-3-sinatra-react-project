@@ -12,7 +12,6 @@ end
 use Rack::JSONBodyParser
 
 # Our application
-use CriticsController
 use GangsterFilmsController
 use ReviewsController
 run ApplicationController

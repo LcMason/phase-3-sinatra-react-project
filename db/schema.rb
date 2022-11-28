@@ -10,13 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_04_011304) do
-
-  create_table "critics", force: :cascade do |t|
-    t.integer "rating"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2022_11_04_011015) do
 
   create_table "gangster_films", force: :cascade do |t|
     t.string "title"
@@ -30,7 +24,6 @@ ActiveRecord::Schema.define(version: 2022_11_04_011304) do
   create_table "reviews", force: :cascade do |t|
     t.string "comment"
     t.integer "gangster_film_id"
-    t.integer "critic_id"
   end
 
 end

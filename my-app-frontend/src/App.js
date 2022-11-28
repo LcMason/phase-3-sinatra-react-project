@@ -1,8 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Navbar from './components/Navigation/Navbar'
-import Home from './components/Static/Home';
-import CriticsForm from './components/Critics/CriticsForm';
-import CriticsList from './components/Critics/CriticsList';
+// import Home from './components/Static/Home';
 import GangsterFilmsForm from './components/GangsterFilms/GangsterFilmsForm';
 import GangsterFilmsList  from './components/GangsterFilms/GangsterFilmsList';
 import ReviewsEdit from './components/Reviews/ReviewsEdit';
@@ -10,7 +8,6 @@ import ReviewsForm from './components/Reviews/ReviewsForm';
 import ReviewsList from './components/Reviews/ReviewsList';
 import { ReviewsProvider } from './context/reviewsContext';
 import { GangsterFilmsProvider } from './context/gangsterFilmsContext';
-import { CriticsProvider } from './context/criticsContext';
 
 
 const App = () => {
@@ -18,7 +15,7 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route index path="/" element={<Home />} />
+        {/* <Route index path="/" element={<Home />} /> */}
       </Routes>
 
       <GangsterFilmsProvider>
@@ -35,30 +32,7 @@ const App = () => {
         
           </Routes>
         </ReviewsProvider>
-        <CriticsProvider>
-          <Routes>
-            <Route path="/critics/new" element={<CriticsForm />} /> 
-            <Route path="/critics" element={<CriticsList />} /> 
-            </Routes>
-        </CriticsProvider>
       </GangsterFilmsProvider>
-
-      {/* <CriticsProvider>
-        <Routes>
-          <Route path="/critics/new" element={<CriticsForm />} /> 
-          <Route path="/critics" element={<CriticsList />} /> 
-          </Routes>
-      </CriticsProvider> */}
-
-      {/* <ReviewsProvider>
-        <Routes>
-          <Route path="/reviews" element={<ReviewsList />} /> 
-          <Route path="/reviews/new" element={<ReviewsForm />} /> 
-          <Route path="/reviews/:id/edit" element={<ReviewsEdit />} /> 
-          <Route path="/reviews" element={<ReviewsCard />} /> 
-        </Routes>
-      </ReviewsProvider> */}
-
     </Router>
      
    

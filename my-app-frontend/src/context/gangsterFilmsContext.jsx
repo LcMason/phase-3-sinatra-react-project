@@ -28,6 +28,27 @@ const GangsterFilmsProvider = ({ children }) => {
 
     }
 
+    // const editGangsterFilmReview = review => {
+    //     const copyOfGangsterFilms = [...gangsterFilms]
+    //     const gangsterFilm = copyOfGangsterFilms.find(gangsterFilm => gangsterFilm.review.find
+    //     (r => r.id == review.id))
+
+    //     if(gangsterFilm.id !== gangsterFilm.review.id) {
+    //         const updatedGangsterFilm = {...gangsterFilm, reviews: gangsterFilm.reviews.filter
+    //         (r => r.id !== review.id)}
+
+    //     }
+
+    //     const gangsterFilmIndex = gangsterFilm.indexOf(gangsterFilm);
+        // const updatedGangsterFilm = {...gangsterFilm, reviews: gangsterFilm.reviews.filter
+        // (r => r.id !== review.id)}
+    // }
+    // not removing any films so line 31-33 may not be needed
+    // const removeReview = review => {
+    //     setReviews(review.filter(r => r.id !== review.id))
+    // } 
+
+
 
     return <GangsterFilmsContext.Provider value={{ gangsterFilms, addGangsterFilm }}>{children} </GangsterFilmsContext.Provider>
 }

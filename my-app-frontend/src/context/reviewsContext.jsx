@@ -1,28 +1,23 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { createContext } from "react";
+import { useEffect, useState, createContext } from "react";
 import { baseUrl, headers } from "../Globals";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
 
 const ReviewsContext = createContext(null);
 
 const ReviewsProvider = ({ children }) => {
     const [reviews, setReviews] = useState([]);
-    // const [updateReviews, setUpdateReviews] = useState([]);
    
-
     const navigate = useNavigate();
 
-    
+    const {id} = useParams();
+
     useEffect(() => {
         fetch(baseUrl + '/reviews')
             .then(resp => resp.json())
             .then(reviews => setReviews(reviews))
     }, [])
     
-
-    const addReview = (review) => {
+    const addReview = review => {
         fetch(baseUrl + '/reviews', {
             method: "POST",
             headers,
@@ -34,34 +29,37 @@ const ReviewsProvider = ({ children }) => {
                 navigate('/reviews')
             })
         }
-    
 
-    // const updateReview = (review) => {
-    //     fetch(baseUrl + './reviews/:id/', {
-    //     method: "PATCH",
-    //     headers,
-    //     body: JSON.stringify(review) 
-    // })
-    //     .then((resp) => resp.json())
-    //     .then(review => setReviews([...reviews, review]))
-    // }
-
-    const removeReview = comment => {
+    const updateReview = review => {
         const copyOfReviews = [...reviews];
-        const review = copyOfReviews.find(review => review.gangster_films.find)
-        (c => c.id == gangster_film.id)
-        const reviewIndex = reviews.indexOf(review);
-        const updatedReview = {...review, comment: review.gangster_films.filter
-        (c => c.id !== gangster_film.id)}
-
-        copyOfReviews.splice(reviewIndex, 1, updatedReview)
+        const r = reviews.find(r => r.id === review.id);
+        const rIndex = reviews.indexOf(r);
+        copyOfReviews.splice(rIndex, 1, review);
         setReviews(copyOfReviews);
+
     }
 
-    
+    const editReview = review => {
+        return fetch(baseUrl + '/reviews/' + review.id, {
+        method: "PATCH",
+        headers,
+        body: JSON.stringify(review), 
+    })
+        .then((resp) => resp.json())
+        .then(data => {
+            updateReview(data);
+            navigate('/reviews')
+            return data
+        })
+      
+    }
+
+    const removeReview = review => {
+        setReviews(reviews.filter(r => r.id !== review.id))
+    }
 
 
-    return <ReviewsContext.Provider value={{ reviews, addReview }}>{children}</ReviewsContext.Provider>
+    return <ReviewsContext.Provider value={{ reviews, id, addReview, editReview, removeReview }}>{children}</ReviewsContext.Provider>
 }
 
 export { ReviewsContext, ReviewsProvider }

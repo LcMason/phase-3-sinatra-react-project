@@ -4,6 +4,10 @@ class ReviewsController < ApplicationController
       Review.all.to_json(include: [:gangster_film]) # brings in all the associated reviews
   end
 
+  get '/reviews/:id' do
+    Review.find_by_id(params[:id]).to_json(include: [:gangster_film])
+  end
+
   post '/reviews' do 
       review = Review.new(params)
       if review.save
@@ -14,11 +18,11 @@ class ReviewsController < ApplicationController
   end
 
   patch '/reviews/:id' do 
-    review = Review.find(params[:id])
-    if review.update(params) # is it necessary to update comment: params [:comment]. This already works but I want to know the diff.
+    review = Review.find_by_id(params[:id])
+    if review.update(params) 
       review.to_json(include: [:gangster_film])
       else
-          {errors: review.errors.full_message }.to_json
+          {errors: review.errors.full_messages}.to_json
       end
   end
 

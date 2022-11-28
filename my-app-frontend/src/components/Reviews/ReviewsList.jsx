@@ -6,8 +6,6 @@ import ReviewsCard from './ReviewsCard'
 const ReviewsList = () => {
   const { reviews } = useContext(ReviewsContext)
 
-
-
   const reviewCards = reviews.map(review => <ReviewsCard key={review.id} review={review} />)
 
   return (

@@ -13,7 +13,7 @@ class GangsterFilmsController < ApplicationController
             {errors: gangster_film.errors.full_message }.to_json
 
         end
-    end
+    end 
 
 
 

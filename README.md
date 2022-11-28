@@ -1,4 +1,60 @@
-# Phase 3 Project Guidelines
+## Overview 
+
+The GangsterFilms app was created for my phase 3 Sinatra-React project at Flatiron. I built a Sinatra API backend that uses Active Record to access and persist data in a database, which will be used by a separate React.js frontend that interacts with the database via the API peforming full CRUD actions. My project contains two controllers, 2 models, and 2 tables - gangster films and reviews. My gangster films controller has a create (GET) and read (POST) while my reviews controller has full CRUD. My gangster film model has many reviews while my review model belongs to a gangster film. My gangster film's table has four rows (title, genre, director, description), while my review table has one row (comment) and the foreign key of gangster film id.
+
+
+## Tech Stack
+
+React<br>
+Ruby<br>
+Sinatra<br>
+HTML5<br>
+
+
+## Setup
+
+#### Front End
+
+cd my-app-frontend<br>
+To install the dependencies run 'npm install -g yarn'. Then 'yarn add react-router-dom'. 'yarn start'<br>
+Then run 'npm start' to run the front end at 'localhost:3000'
+
+#### Back End
+
+cd phase-3-sinatra-react-project<br>
+To install dependencies run 'bundle i' in your terminal<br>
+Then run 'rake server'
+
+
+## Resources 
+
+- create-react-app
+- Postman
+- https://www.insider.com/best-gangster-movies-of-all-time-ranked-2020-9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Learning Goals
 
